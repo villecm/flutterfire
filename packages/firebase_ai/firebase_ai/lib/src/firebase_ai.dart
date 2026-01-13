@@ -20,6 +20,7 @@ import 'package:firebase_core_platform_interface/firebase_core_platform_interfac
 import 'package:meta/meta.dart';
 
 import '../firebase_ai.dart';
+import 'client.dart';
 import 'base_model.dart';
 
 const _defaultLocation = 'us-central1';
@@ -137,7 +138,25 @@ class FirebaseAI extends FirebasePluginPlatform {
     List<Tool>? tools,
     ToolConfig? toolConfig,
     Content? systemInstruction,
+    ApiClient? client,
   }) {
+    if (client != null) {
+      return createModelWithClient(
+        model: model,
+        app: app,
+        appCheck: appCheck,
+        useVertexBackend: _useVertexBackend,
+        auth: auth,
+        location: location,
+        safetySettings: safetySettings,
+        generationConfig: generationConfig,
+        tools: tools,
+        toolConfig: toolConfig,
+        systemInstruction: systemInstruction,
+        useLimitedUseAppCheckTokens: useLimitedUseAppCheckTokens,
+        client: client,
+      );
+    }
     return createGenerativeModel(
       model: model,
       app: app,

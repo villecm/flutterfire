@@ -62,6 +62,7 @@ export 'src/error.dart'
         ServiceApiNotEnabled,
         QuotaExceeded,
         UnsupportedUserLocation;
+export 'src/client.dart' show ApiClient;
 export 'src/firebase_ai.dart' show FirebaseAI;
 export 'src/imagen/imagen_api.dart'
     show
